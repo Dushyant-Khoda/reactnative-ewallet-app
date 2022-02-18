@@ -4,6 +4,7 @@ import Animated from "react-native-reanimated";
 import { useTheme } from "styled-components";
 const Home = ({ animatedStyle }) => {
   const theme = useTheme();
+
   return (
     <Animated.View
       style={{
