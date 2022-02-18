@@ -8,7 +8,15 @@ import {
 import { McText, McImage } from "../../Components";
 import { Images } from "../../Constants";
 import { useTheme } from "styled-components/native";
-import { Home } from "../../Screens";
+import {
+  Home,
+  Account,
+  Help,
+  Profile,
+  Settings,
+  Stats,
+  Transaction,
+} from "../../Screens";
 import Animated from "react-native-reanimated";
 const Drawer = createDrawerNavigator();
 // todo: Menu
@@ -22,8 +30,8 @@ const MENU = [
     label: "Profile",
   },
   {
-    name: "Accounts",
-    label: "Accounts",
+    name: "Account",
+    label: "Account",
   },
   {
     name: "Transaction",
@@ -34,8 +42,8 @@ const MENU = [
     label: "Stats",
   },
   {
-    name: "Setting",
-    label: "Setting",
+    name: "Settings",
+    label: "Settings",
   },
   {
     name: "Help",
@@ -98,6 +106,10 @@ const CustomDrawerContent = ({ navigation, theme }) => {
               activeTintColor={theme.colors.boxBackground}
               focused={activeIndex === index}
               key={index}
+              onPress={() => {
+                navigation.navigate(menu.name);
+                setActiveIndex(index);
+              }}
               label={({ focused }) => {
                 return (
                   <View
@@ -207,6 +219,24 @@ const DrawerMenu = () => {
       >
         <Drawer.Screen name="Home">
           {(props) => <Home {...props} animatedStyle={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="Account">
+          {(props) => <Account {...props} animatedStyle={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="Help">
+          {(props) => <Help {...props} animatedStyle={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="Profile">
+          {(props) => <Profile {...props} animatedStyle={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="Settings">
+          {(props) => <Settings {...props} animatedStyle={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="Stats">
+          {(props) => <Stats {...props} animatedStyle={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="Transaction">
+          {(props) => <Transaction {...props} animatedStyle={animatedStyle} />}
         </Drawer.Screen>
       </Drawer.Navigator>
     </View>
