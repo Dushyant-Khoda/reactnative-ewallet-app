@@ -1,7 +1,10 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import Animated from "react-native-reanimated";
-import { useTheme } from "styled-components";
+import styled, { useTheme } from "styled-components";
+import { McText, McImage } from "../../Components";
+import { Images } from "../../Constants";
+import { dummyData } from "../../Mock";
 const Home = ({ animatedStyle }) => {
   const theme = useTheme();
 
@@ -9,15 +12,221 @@ const Home = ({ animatedStyle }) => {
     <Animated.View
       style={{
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        // justifyContent: "center",
+        // alignItems: "center",
         backgroundColor: theme.colors.background,
+        paddingTop: 44,
         ...animatedStyle,
       }}
     >
-      <Text>Home Screen</Text>
+      {/* Header Section */}
+      <HeaderSection>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <McImage source={Images.logo} style={{ marginRight: 10 }} />
+          <McText secondary size={28} color={theme.colors.text1}>
+            eWallet
+          </McText>
+        </View>
+        <McImage
+          source={Images.union}
+          style={{ height: 19, width: 19, tintColor: theme.colors.text2 }}
+        />
+      </HeaderSection>
+      {/* Account Review */}
+      <HeaderSection style={{ marginTop: 50 }}>
+        <McText semi size={16} color={theme.colors.text2}>
+          Account Overview
+        </McText>
+      </HeaderSection>
+      <View
+        style={{
+          marginHorizontal: 25,
+          marginTop: 20,
+          height: 116,
+          backgroundColor: theme.colors.boxBackground,
+          borderRadius: 12,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <View style={{ marginLeft: 25 }}>
+          <McText
+            semi
+            size={24}
+            color={theme.colors.text1}
+            style={{ lineHeight: 30, marginBottom: 8 }}
+          >
+            20,600
+          </McText>
+          <McText size={16} color={theme.colors.text3}>
+            Current Balance
+          </McText>
+        </View>
+
+        <TouchableOpacity
+          style={{
+            width: 48,
+            height: 48,
+            borderRadius: 24,
+            marginRight: 24,
+            backgroundColor: theme.colors.primary,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <McImage source={Images.plus}></McImage>
+        </TouchableOpacity>
+      </View>
+
+      {/* Send Money */}
+      <HeaderSection style={{ marginTop: 40 }}>
+        <McText semi size={16} color={theme.colors.text2}>
+          Send Money
+        </McText>
+        <McImage source={Images.scan} />
+      </HeaderSection>
+      <View>
+        <FlatList
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={dummyData.SendMoneyRecords}
+          renderItem={({ item, index }) => {
+            return (
+              <View
+                style={{
+                  marginTop: 20,
+                  marginLeft: index === 0 ? 25 : 0,
+                  // marginLeft:
+                  //   index === dummyData.SendMoneyRecords.length - 1 ? 150 : 10,
+                  marginLeft: 10,
+                }}
+              >
+                {index === 0 ? (
+                  <View
+                    style={{
+                      width: 52,
+                      height: 128,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <TouchableOpacity
+                      style={{
+                        width: 52,
+                        height: 52,
+                        borderRadius: 26,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: theme.colors.primary,
+                      }}
+                    >
+                      <McImage source={item.img} />
+                    </TouchableOpacity>
+                  </View>
+                ) : (
+                  <TouchableOpacity
+                    style={{
+                      width: 110,
+                      height: 128,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      backgroundColor: theme.colors.boxBackground,
+                      borderRadius: 12,
+                    }}
+                  >
+                    <View
+                      style={{
+                        width: 42,
+                        height: 42,
+                        borderRadius: 21,
+                        borderWidth: 1,
+                        borderColor: "rgba(58,66,118,0.2)",
+                        backgroundColor: theme.colors.boxBackground,
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <McImage source={item.avatar} />
+                    </View>
+                    <McText
+                      size={16}
+                      color={theme.colors.text3}
+                      style={{ marginTop: 16 }}
+                    >
+                      {item.name}
+                    </McText>
+                  </TouchableOpacity>
+                )}
+              </View>
+            );
+          }}
+        ></FlatList>
+      </View>
+      {/* Services Section */}
+      <HeaderSection style={{ marginTop: 40 }}>
+        <McText semi size={16} color={theme.colors.text2}>
+          Services
+        </McText>
+        <McImage source={Images.filter} />
+      </HeaderSection>
+      <View
+        style={{
+          marginTop: 20,
+          marginHorizontal: 25,
+          flexDirection: "row",
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+          flexWrap: "wrap",
+        }}
+      >
+        {dummyData.Services &&
+          dummyData.Services.map((item, index) => {
+            return (
+              <View
+                key={item.id}
+                style={{
+                  height: 96,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginLeft: index === 0 || index === 4 ? 0 : 28,
+                  marginTop: index > 3 ? 20 : 0,
+                }}
+              >
+                <TouchableOpacity
+                  style={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: 12,
+                    backgroundColor: theme.colors.boxBackground,
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <McImage source={item.img} />
+                </TouchableOpacity>
+                <McText
+                  semi
+                  size={10}
+                  color={theme.colors.text3}
+                  style={{ marginTop: 6, width: 52, textAlign: "center" }}
+                >
+                  {item.name}
+                </McText>
+              </View>
+            );
+          })}
+      </View>
     </Animated.View>
   );
 };
+
+const HeaderSection = styled.View`
+  margin: 0px 25px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export default Home;
