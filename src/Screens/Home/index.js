@@ -12,7 +12,7 @@ const Home = ({ animatedStyle }) => {
         ...animatedStyle,
       }}
     >
-      <Text>Home Screen</Text>
+      <Text>Screen</Text>
     </Animated.View>
   );
 };
