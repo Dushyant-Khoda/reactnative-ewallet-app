@@ -11,6 +11,8 @@ import {
   Settings,
   Stats,
   Transaction,
+  Plan,
+  Customplan,
   SignIn,
 } from "Screens";
 
@@ -70,6 +72,20 @@ const Stacks = ({ params }) => (
     <Stack.Screen
       name="SignIn"
       component={SignIn}
+      options={{
+        headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name="Plan"
+      component={Plan}
+      options={{
+        headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name="Customplan"
+      component={Customplan}
       options={{
         headerShown: false,
       }}

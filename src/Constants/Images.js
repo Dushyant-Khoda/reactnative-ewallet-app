@@ -25,6 +25,7 @@ const scan = require("../../assets/images/scan.png");
 const send_money = require("../../assets/images/send_money.png");
 const union = require("../../assets/images/union.png");
 const cloud = require("../../assets/images/cloud.png");
+const printer = require("../../assets/images/printer.png");
 
 /**
  * export the images object
@@ -39,6 +40,7 @@ export default {
   cashback_offer,
   close,
   cloud,
+  printer,
   color_bar,
   electricity_bill,
   filter,

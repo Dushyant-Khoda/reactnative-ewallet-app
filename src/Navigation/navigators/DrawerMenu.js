@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -16,6 +16,8 @@ import {
   Settings,
   Stats,
   Transaction,
+  Plan,
+  Customplan,
   SignIn,
 } from "../../Screens";
 import Animated from "react-native-reanimated";
@@ -54,6 +56,14 @@ const MENU = [
   {
     name: "SignIn",
     label: "SignIn",
+  },
+  {
+    name: "Plan",
+    label: "Plan",
+  },
+  {
+    name: "Customplan",
+    label: "Customplan",
   },
 ];
 
@@ -248,6 +258,12 @@ const DrawerMenu = () => {
         </Drawer.Screen>
         <Drawer.Screen name="Transaction">
           {(props) => <Transaction {...props} animatedStyle={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="Plan">
+          {(props) => <Plan {...props} animatedStyle={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="Customplan">
+          {(props) => <Customplan {...props} animatedStyle={animatedStyle} />}
         </Drawer.Screen>
         {/* <Drawer.Screen name="SignIn">
           {(props) => <SignIn {...props} animatedStyle={animatedStyle} />}

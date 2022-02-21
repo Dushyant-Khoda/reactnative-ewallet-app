@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StatusBar } from "react-native";
+import { View, Text, StatusBar, TouchableOpacity } from "react-native";
 import Animated from "react-native-reanimated";
 import { useTheme } from "styled-components";
 import { McText, McImage } from "../../Components";
@@ -49,7 +49,7 @@ function TodayData() {
   let data = `${month}.${date}.${year} | ${day}`;
   return data;
 }
-const SignIn = ({ animatedStyle }) => {
+const SignIn = ({ animatedStyle, navigation }) => {
   const theme = useTheme();
   return (
     <View>
@@ -121,7 +121,10 @@ const SignIn = ({ animatedStyle }) => {
             </View>
           </View>
           <View>
-            <View
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Home");
+              }}
               style={{
                 height: 50,
                 width: 190,
@@ -139,7 +142,7 @@ const SignIn = ({ animatedStyle }) => {
                 source={Images.right_arrow}
                 style={{ marginLeft: 8 }}
               ></McImage>
-            </View>
+            </TouchableOpacity>
             <View>
               <McText>Create an account</McText>
             </View>
