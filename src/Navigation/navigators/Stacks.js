@@ -11,12 +11,13 @@ import {
   Settings,
   Stats,
   Transaction,
+  SignIn,
 } from "Screens";
 
 const Stack = createStackNavigator();
 
 const Stacks = ({ params }) => (
-  <Stack.Navigator initialRouteName="Home">
+  <Stack.Navigator initialRouteName="SignIn">
     <Stack.Screen
       name="Home"
       component={DrawerMenu}
@@ -62,6 +63,13 @@ const Stacks = ({ params }) => (
     <Stack.Screen
       name="Transaction"
       component={Transaction}
+      options={{
+        headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name="SignIn"
+      component={SignIn}
       options={{
         headerShown: false,
       }}

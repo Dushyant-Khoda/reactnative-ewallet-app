@@ -16,6 +16,7 @@ import {
   Settings,
   Stats,
   Transaction,
+  SignIn,
 } from "../../Screens";
 import Animated from "react-native-reanimated";
 const Drawer = createDrawerNavigator();
@@ -41,6 +42,7 @@ const MENU = [
     name: "Stats",
     label: "Stats",
   },
+
   {
     name: "Settings",
     label: "Settings",
@@ -48,6 +50,10 @@ const MENU = [
   {
     name: "Help",
     label: "Help",
+  },
+  {
+    name: "SignIn",
+    label: "SignIn",
   },
 ];
 
@@ -141,7 +147,12 @@ const CustomDrawerContent = ({ navigation, theme }) => {
       </DrawerContentScrollView>
       {/* Footer */}
       <View style={{ marginBottom: 27, marginLeft: 10 }}>
-        <View
+        <TouchableOpacity
+          onPress={() => {
+            // Simulating logout and redirect to SignIn Page
+            navigation.closeDrawer();
+            navigation.navigate("SignIn");
+          }}
           style={{
             flexDirection: "row",
             justifyContent: "center",
@@ -155,7 +166,7 @@ const CustomDrawerContent = ({ navigation, theme }) => {
           <McText bold size={16} color={theme.colors.text2}>
             Logout
           </McText>
-        </View>
+        </TouchableOpacity>
         <View style={{ marginTop: 42 }}>
           <McText medium size={10} color={theme.colors.text2}>
             Version 2.0.1
@@ -238,6 +249,9 @@ const DrawerMenu = () => {
         <Drawer.Screen name="Transaction">
           {(props) => <Transaction {...props} animatedStyle={animatedStyle} />}
         </Drawer.Screen>
+        {/* <Drawer.Screen name="SignIn">
+          {(props) => <SignIn {...props} animatedStyle={animatedStyle} />}
+        </Drawer.Screen> */}
       </Drawer.Navigator>
     </View>
   );

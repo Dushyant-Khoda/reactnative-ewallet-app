@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import Animated from "react-native-reanimated";
 import { useTheme } from "styled-components";
+import { McText, McImage } from "../../Components";
 const Stats = ({ animatedStyle }) => {
   const theme = useTheme();
   return (
@@ -14,7 +15,7 @@ const Stats = ({ animatedStyle }) => {
         ...animatedStyle,
       }}
     >
-      <Text>Stats Screen</Text>
+      <McText>Stats Screen</McText>
     </Animated.View>
   );
 };

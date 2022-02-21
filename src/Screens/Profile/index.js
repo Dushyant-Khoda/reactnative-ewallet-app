@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text } from "react-native";
 import Animated from "react-native-reanimated";
 import { useTheme } from "styled-components";
+import { McText, McImage } from "../../Components";
+
 const Profile = ({ animatedStyle }) => {
   const theme = useTheme();
   return (
@@ -14,7 +16,7 @@ const Profile = ({ animatedStyle }) => {
         ...animatedStyle,
       }}
     >
-      <Text>Profile Screen</Text>
+      <McText>Profile Screen</McText>
     </Animated.View>
   );
 };

@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text } from "react-native";
 import Animated from "react-native-reanimated";
 import { useTheme } from "styled-components";
+import { McText, McImage } from "../../Components";
+
 const Transaction = ({ animatedStyle }) => {
   const theme = useTheme();
   return (
@@ -14,7 +16,7 @@ const Transaction = ({ animatedStyle }) => {
         ...animatedStyle,
       }}
     >
-      <Text>Transaction Screen</Text>
+      <McText>Transaction Screen</McText>
     </Animated.View>
   );
 };
